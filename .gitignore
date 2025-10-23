@@ -15,3 +15,5 @@ venv/
 
 .env
 *.log
+file_storage/*
+!file_storage/.gitkeep
