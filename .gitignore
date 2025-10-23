@@ -11,7 +11,7 @@ htmlcov
 .venv/
 venv/
 
-.idea/
+.idea
 
 .env
 *.log
