@@ -1,0 +1,46 @@
+[tool.coverage.run]
+source = ["backend/src/"]
+omit = ["*/tests/*", "*/setup.py"]
+
+[tool.coverage.report]
+fail_under = 100
+show_missing = true
+skip_covered = true
+skip_empty = false
+
+[tool.mypy]
+strict = true
+exclude = ["venv", ".venv", "alembic", "whl"]
+explicit_package_bases = true
+
+[tool.ruff]
+line-length = 110
+indent-width = 4
+target-version = "py314"
+exclude = ["alembic"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+docstring-code-format = false
+
+[tool.ruff.lint]
+select = [
+"E", # pycodestyle errors
+"W", # pycodestyle warnings
+"F", # pyflakes
+"I", # isort
+"B", # flake8-bugbear
+"C4", # flake8-comprehensions
+"UP", # pyupgrade
+"ARG001", # unused arguments in functions
+]
+ignore = [
+"E501", # line too long, handled by black
+"B008", # do not perform function calls in argument defaults
+"W191", # indentation contains tabs
+"B904", # Allow raising exceptions without from e, for HTTPException
+"W291"
+]
