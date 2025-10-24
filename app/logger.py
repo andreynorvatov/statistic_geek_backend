@@ -17,16 +17,13 @@ stream_handler.setFormatter(formatter)
 
 file_handler = RotatingFileHandler(
     LOG_FILE_PATH,
-    mode='a',
+    mode="a",
     encoding="utf-8",
     maxBytes=1 * 1024 * 1024,  # 1Mb
     backupCount=3,
 )
 file_handler.setFormatter(formatter)
 
-logger.handlers = [
-    stream_handler,
-    file_handler
-]
+logger.handlers = [stream_handler, file_handler]
 
 logger.setLevel(logging.INFO)

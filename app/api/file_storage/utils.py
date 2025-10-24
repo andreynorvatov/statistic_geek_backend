@@ -15,9 +15,7 @@ def get_img_name_uuid4() -> str:
 
 
 async def save_file(
-        uploaded_file: UploadFile,
-        base_storage_path: Path,
-        chunk_size: int = 500 * 1024
+    uploaded_file: UploadFile, base_storage_path: Path, chunk_size: int = 500 * 1024
 ) -> dict[str, Any]:
     """
     Сохранение файла на диск с созданием структуры по uuid
@@ -53,7 +51,7 @@ async def save_file(
 
     # Сохраняем файл частями:
     await uploaded_file.seek(0)
-    async with aiofiles.open(full_file_path, 'wb') as f:
+    async with aiofiles.open(full_file_path, "wb") as f:
         c = 0
         while chunk := await uploaded_file.read(chunk_size):
             c += 1
@@ -62,16 +60,13 @@ async def save_file(
 
     logger.info(f"Фото сохранено: {uuid_str} ({file_size} байт)")
 
-    return {
-        "file_id": uuid_str,
-        "file_size_byte": file_size
-    }
+    return {"file_id": uuid_str, "file_size_byte": file_size}
 
 
 def get_file_path_by_uuid(file_uuid: str, base_storage_path: Path) -> str:
     """Функция для получения пути к файлу по его UUID"""
-    uuid_str = file_uuid
-    first_part = uuid_str[0:2]
-    second_part = uuid_str[2:4]
+    uuid_str = file_uuid.split(".")[0]
+    first_part = file_uuid[0:2]
+    second_part = file_uuid[2:4]
     file_extension = ".jpg"  # Это нужно знать или хранить в БД
     return os.path.join(base_storage_path, first_part, second_part, f"{uuid_str}{file_extension}")

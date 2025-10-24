@@ -8,6 +8,7 @@ from app.logger import logger
 
 health_check_router = APIRouter()
 
+
 @health_check_router.get(
     "/health/detailed",
     response_model=HealthCheck,

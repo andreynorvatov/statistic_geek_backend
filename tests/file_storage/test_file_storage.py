@@ -57,7 +57,7 @@ def test_upload_image_different_image_types() -> None:
         ("test_image.jpeg", "image/jpeg"),
         ("test_image.png", "image/png"),
         ("test_image.gif", "image/gif"),
-        ("test_image.webp", "image/webp")
+        ("test_image.webp", "image/webp"),
     ]
 
     for filename, content_type in supported_types:
@@ -87,4 +87,3 @@ def test_upload_image_large_filename() -> None:
 
     response_data = response.json()
     assert response_data["file_name"] == long_filename
-

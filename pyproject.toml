@@ -16,7 +16,7 @@ explicit_package_bases = true
 [tool.ruff]
 line-length = 110
 indent-width = 4
-target-version = "py314"
+target-version = "py313"
 exclude = ["alembic"]
 
 [tool.ruff.format]

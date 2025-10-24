@@ -29,7 +29,7 @@ def test_system_health() -> None:
 
     # Проверка формата timestamp (должен быть строкой в ISO формате)
     try:
-        datetime.fromisoformat(json_data["timestamp"].replace('Z', '+00:00'))
+        datetime.fromisoformat(json_data["timestamp"].replace("Z", "+00:00"))
         timestamp_valid = True
     except (ValueError, TypeError):
         timestamp_valid = False
